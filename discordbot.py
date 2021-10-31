@@ -1,9 +1,7 @@
-*/ 
-IMPORTANT: THERE ARE MULTIPLE
-STEPS TO FOLLOW BEFORE USING THIS DISCORD BOT.
-REFER TO THE GUIDE IN README BEFORE USING THIS BOT. THIS BOT WILL NOT FUNCTION
-WITHOUT THE SETUP OF YOUR GOOGLE DEVICE ACCESS PROJECT. 
-*/
+# IMPORTANT: THERE ARE MULTIPLE
+# STEPS TO FOLLOW BEFORE USING THIS DISCORD BOT.
+# REFER TO THE GUIDE IN README BEFORE USING THIS BOT. THIS BOT WILL NOT FUNCTION
+# WITHOUT THE SETUP OF YOUR GOOGLE DEVICE ACCESS PROJECT. 
 
 import discord
 import requests
@@ -13,12 +11,12 @@ import re
 verified = False
 global url_set_mode
 
-// Replace these variables with your own values. Refer to README to setup Device Access Project and create values.
+# Replace these variables with your own values. Refer to README to setup Device Access Project and create values.
 project_id = 'your-project-id-here'
 client_id = 'your-client-id-here'
 client_secret = 'your-client-secret-here'
 
-// Do not change this. The redirect url will contain your access token to control your thermostat.
+# Do not change this. The redirect url will contain your access token to control your thermostat.
 redirect_uri = 'https://www.google.com'
 
 description = """Discord bot that controls temperature and thermostat mode of your Google
@@ -29,13 +27,13 @@ intents.members = True
 
 bot = commands.Bot(command_prefix="?", description=description, intents=intents)
 
-// Event that confirms that the bot has logged in successfully.
+# Event that confirms that the bot has logged in successfully.
 @bot.event
 async def on_ready():
     print(f"Logged in as {bot.user} (ID: {bot.user.id})")
     print("------")
 
-// Bot command that grabs user access token from their URL. Assumes that you have already setup Google Device Access Project (React to README)
+# Bot command that grabs user access token from their URL. Assumes that you have already setup Google Device Access Project (React to README)
 @bot.command()
 async def verify(ctx):
     await ctx.send("The following is used for verification purposes: ")
@@ -44,16 +42,13 @@ async def verify(ctx):
     await ctx.send(url)
     await ctx.send("\nAfter that, use ?code to paste your URL as a message.\n")
 
-// Bot command that receives user's access token from URL
+# Bot command that receives user's access token from URL
 @bot.command()
 async def code(ctx, code: str):
     code = code.replace('&scope=https://www.googleapis.com/auth/sdm.service', '')
     code = code.replace('https://www.google.com/?code=', '')
     await ctx.send("\nCode received. Please wait...")
-    # await ctx.send("Your code is\n" + code)
-    # verified = True
-    await ctx.send(verified)
-    import requests
+
 
     params = (
         ('client_id', client_id),
@@ -115,11 +110,13 @@ async def code(ctx, code: str):
 
     humidity = response_json['traits']['sdm.devices.traits.Humidity']['ambientHumidityPercent']
 
-    await ctx.send("Current Humidity: " + humidity)
+    await ctx.send("Current Humidity: ")
+    await ctx.send(humidity)
 
     temperature = response_json['traits']['sdm.devices.traits.Temperature']['ambientTemperatureCelsius']
 
-    await ctx.send("Current Temp: " + temperature)
+    await ctx.send("Current Temperature: ")
+    await ctx.send(temperature)
 
     url_set_mode = 'https://smartdevicemanagement.googleapis.com/v1/' + device_0_name + ':executeCommand'
 
@@ -128,13 +125,13 @@ async def code(ctx, code: str):
         'Authorization': access_token,
     }
 
-    // Bot command for user to set thermostat mode and temp. Example: ?setTemp HEAT 23.0
-    // Only accepts the values "HEAT" or "COOL" for thermostat mode
-    // Temperature has to be a decimal value.
+    # Bot command for user to set thermostat mode and temp. Example: ?setTemp HEAT 23.0
+    # Only accepts the values "HEAT" or "COOL" for thermostat mode
+    # Temperature has to be a decimal value.
     @bot.command()
     async def setTemp(ctx, userPref_ThermostatMode: str, set_temp_to: float):
 
-        await ctx.send("Temperature")
+        await ctx.send("Temperature set. Please check your thermostat to confirm.")
 
         if userPref_ThermostatMode == "HEAT":
             data = '{ "command" : "sdm.devices.commands.ThermostatMode.SetMode", "params" : { "mode" : "HEAT" } }'
@@ -161,5 +158,5 @@ async def code(ctx, code: str):
         print(response.json())
 
        
-// Insert the token for your bot.
-bot.run("your-token")
+# Insert the token for your bot.
+bot.run("your-token-here")
