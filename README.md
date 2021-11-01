@@ -44,11 +44,13 @@ Commands:
 
       After that, use ?code to paste your URL as a message."
       
-?code -> Receives user's access token from URL
+?code -> Receives user's access token from URL. 
+
+(?verify has to be used to get URL before using this command.)
 
       Example:
       
-      "?code"
+      "?code (url from the previous command here)"
       
       "Code received. Please wait...
        Current Humidity:
