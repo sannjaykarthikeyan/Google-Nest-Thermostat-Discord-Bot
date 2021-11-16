@@ -1,6 +1,8 @@
 # Google-Nest-Thermostat-Discord-Bot
 Discord bot that controls temperature and thermostat mode of your Google Nest Thermostat. Uses Pycord and Google Device Access API to access and change thermostat settings. 
 
+**IMPORTANT: READ README.MD BEFORE ATTEMPTING TO USE PROGRAM.**
+
 I created this bot as a solution to the lack of interfaces available to control Google Nest Thermostats on PCs. It is used as an alternative to the Google Home and (now defunct) Nest mobile app. Besides using an Android Emulator, there is currently no way to control your Google Nest Thermostat on a PC.
 
 Instructions: 
