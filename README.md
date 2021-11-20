@@ -16,6 +16,7 @@ Take note of your bot token. DO NOT SHARE THIS TOKEN.
 
 2. Follow the steps in this guide to create a Google Cloud Console Project:
 https://www.wouternieuwerth.nl/controlling-a-google-nest-thermostat-with-python/
+(P.S A non-refundable $5 USD fee paid to Google is required to create a Google Cloud Console Project)
 
 This is a requirement in order to access your project ID, your client ID and your client secret. DO NOT SHARE
 ANY OF THESE VALUES.
