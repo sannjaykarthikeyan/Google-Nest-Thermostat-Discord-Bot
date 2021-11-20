@@ -45,7 +45,7 @@ Commands:
 
       Go to this URL to log in:
 
-      (url here)
+      (you would paste your url here)
 
       After that, use ?code to paste your URL as a message."
       
@@ -55,7 +55,7 @@ Commands:
 
       Example:
       
-      "?code (url from the previous command here)"
+      "?code (url you received from the previous command here)"
       
       "Code received. Please wait...
        Current Humidity:
@@ -71,11 +71,6 @@ Commands:
       
       "Temperature set. Please check your thermostat to confirm."
       
-
-
-
-
-
 Credits: 
 
 Wouter Nieuwerth: "Controlling a Google Nest Thermostat with Python".
