@@ -69,6 +69,12 @@ Commands:
       
       "Temperature set. Please check your thermostat to confirm."
       
+?cmds -> Displays commands
+
+?currentTemp -> Displays current temperature.
+
+?currentHumidity -> Displays current humidity.
+
 Credits: 
 
 Wouter Nieuwerth: "Controlling a Google Nest Thermostat with Python".
