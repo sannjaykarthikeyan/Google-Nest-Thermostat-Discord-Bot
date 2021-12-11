@@ -12,9 +12,9 @@ verified = False
 global url_set_mode
 
 # Replace these variables with your own values. Refer to README to setup Device Access Project and create values.
-project_id = 'your-project-id-here'
-client_id = 'your-client-id-here'
-client_secret = 'your-client-secret-here'
+project_id = 'YOUR-PROJECT-ID-HERE'
+client_id = 'YOUR-CLIENT-ID-HERE'
+client_secret = 'YOUR-CLIENT-SECRET-HERE'
 
 # Do not change this. The redirect url will contain your access token to control your thermostat.
 redirect_uri = 'https://www.google.com'
@@ -41,6 +41,23 @@ async def verify(ctx):
     await ctx.send("Go to this URL to log in: ")
     await ctx.send(url)
     await ctx.send("\nAfter that, use ?code to paste your URL as a message.\n")
+
+# Bot command that displays list of commands.
+@bot.command()
+async def cmds(ctx):
+    await ctx.send("Commands:")
+    await ctx.send("---------")
+    await ctx.send("?verify -> Verifies the user's Google account connected to their Nest thermostat.")
+    await ctx.send("---------")
+    await (ctx.send("?code -> OAuth Code to receive Thermostat data and control Thermostat."))
+    await ctx.send("---------")
+    await ctx.send("?setTemp YOUR-MODE YOUR-TEMP -> Sets temperature to HEAT or COOL, followed by an integer denoting the temperature in *C/*F. Example: ?setTemp HEAT 22")
+    await ctx.send("---------")
+    await ctx.send("?currentTemp -> Current Temperature of Thermostat")
+    await ctx.send("---------")
+    await ctx.send("?currentHumidity -> Current Humidity of Thermostat")
+    await ctx.send("---------")
+
 
 # Bot command that receives user's access token from URL
 @bot.command()
@@ -157,6 +174,19 @@ async def code(ctx, code: str):
 
         print(response.json())
 
+    # Bot command that displays the current temperature.
+    @bot.command()
+    async def currentTemp(ctx):
+        await ctx.send("The current temperature is: " + str(temperature) + ".")
+
+    # Bot command that displays the current humidity.
+    @bot.command()
+    async def currentHumidity(ctx):
+          await ctx.send("The current humidity is " + str(humidity) + ".")
+
+       
+
+
        
 # Insert the token for your bot.
-bot.run("your-token-here")
+bot.run("YOUR-TOKEN-HERE")
