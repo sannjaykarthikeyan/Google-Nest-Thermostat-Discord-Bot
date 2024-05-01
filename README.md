@@ -1,8 +1,6 @@
 # Google-Nest-Thermostat-Discord-Bot (V2.0.0)
 Discord bot that controls temperature and thermostat mode of your Google Nest Thermostat. Uses Pycord and Google Device Access API to access and change thermostat settings. 
 
-**IMPORTANT: READ README.MD BEFORE ATTEMPTING TO USE PROGRAM.**
-
 Instructions: 
 
 1. Create a Discord Bot using the Discord Developer portal. The Developer Portal can be found Here: https://discord.com/developers/applications
